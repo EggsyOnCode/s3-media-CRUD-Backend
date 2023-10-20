@@ -46,6 +46,7 @@ const s3 = new S3Client({
 
 app.get("/api/posts", async (req, res) => {
   const posts = await prisma.posts.findMany({ orderBy: [{ created: "desc" }] });
+  console.log(posts);
   for (const post of posts) {
     const objParams = {
       Bucket: bucketName,
